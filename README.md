@@ -22,10 +22,7 @@ The website provides information about:
 
 ## Built With
 
-- HTML5
-- CSS3
-- JavaScript
-- Formspree
+HTML, CSS, JavaScript, Formspree
 
 ## Running Locally
 
