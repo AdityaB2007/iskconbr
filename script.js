@@ -1,4 +1,3 @@
-
 "use strict";
 
 const pageSlider = document.querySelector(".page-slider");
@@ -106,4 +105,52 @@ if (pageSlider) {
 
     showSlide(0);
     startSlider();
+}
+
+/* ================================
+   Page Transitions
+================================ */
+
+const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+).matches;
+
+if (!prefersReducedMotion) {
+    const internalLinks = document.querySelectorAll(
+        'a[href]:not([target="_blank"]):not([download])'
+    );
+
+    internalLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const destination = link.href;
+            const currentPage = window.location.href;
+
+            const isSamePageLink =
+                link.getAttribute("href").startsWith("#");
+
+            const isExternalLink =
+                link.origin !== window.location.origin;
+
+            const isSameDestination =
+                destination === currentPage;
+
+            if (
+                isSamePageLink ||
+                isExternalLink ||
+                isSameDestination
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            document.body.classList.add(
+                "page-transitioning-out"
+            );
+
+            setTimeout(() => {
+                window.location.href = destination;
+            }, 350);
+        });
+    });
 }
