@@ -22,7 +22,7 @@ The website provides information about:
 
 ## Built With
 
-Frontend: Legacy HTML, CSS, JavaScript
+Frontend: Legacy HTML, CSS, JavaScript<br>
 Form Handling: Formspree
 
 ## Running Locally
