@@ -8,6 +8,7 @@
   <meta property="og:title" content="New Vraja Dham | ISKCON Baton Rouge">
   <meta property="og:description" content="Bhakti-yoga meditation, kirtan, Bhagavad Gita discussions, prasadam, and spiritual community in Baton Rouge, Louisiana.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iskconbr.org">
   <meta name="author" content="New Vraja Dham">
   <title>New Vraja Dham | ISKCON Baton Rouge</title>
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,13 +18,13 @@
 
 <body>
   <header>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main navigation">
       <div class="logo">
         <img src="public/misc/logo.png" alt="ISKCON logo">
         <span>New Vraja Dham</span>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="programs.html">Programs</a></li>
         <li><a href="resources.html">Resources</a></li>
@@ -46,11 +47,56 @@
                 <a href="contact.html">Contact Us</a>
             </div>
         </div>
-        <div class="hero-image">
+        <div class="hero-slider" aria-label="New Vraja Dham image slideshow">
+          <div class="slides">
             <img
-                src="public/misc/srila-prabhupada.png"
-                alt="A.C. Bhaktivedanta Swami Srila Prabhupada"
+              class="slide active"
+              src="public/misc/srila-prabhupada.png"
+              alt="A.C.Bhaktivedanta Swami Srila Prabhupada"
             >
+            <img
+              class="slide"
+              src="public/misc/temple.png"
+              alt="New Vraja Dham temple"
+            >
+            <img
+              class="slide"
+              src="public/misc/kirtan.png"
+              alt="Devotees participting in kirtan"
+            >
+          </div>
+          <button
+            class="slider-button previous"
+            type="button"
+            aria-label="Previous slide"
+          >
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button
+            class="slider-button next"
+            type="button"
+            aria-label="Next slide"
+          >
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+          <div class="slider-dots" aria-label="Choose slideshow image">
+            <button
+              class="slider-dot active"
+              type="button"
+              aria-label="Show slide 1"
+              aria-current="true"
+            ></button>
+            <button
+              class="slider-dot"
+              type="button"
+              aria-label="Show slide 2"
+            ></button>
+            <button
+              class="slider-dot"
+              type="button"
+              aria-label="Show slide 3"
+            ></button>
+          </div>
         </div>
     </section>
     <section class="welcome-section">
@@ -79,7 +125,7 @@
   <footer>
     <p>
       © 2026 New Vraja Dham | ISKCON Baton Rouge |
-    <a href="https://www.instagram.com/iskconbatonrouge/" target="_blank" rel="noopener noreferrer" class="social-link">
+    <a href="https://www.instagram.com/iskconbatonrouge/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Visit Us on Instagram">
       <i class="fa-brands fa-instagram"></i>
     </a>
     </p>
