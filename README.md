@@ -22,7 +22,8 @@ The website provides information about:
 
 ## Built With
 
-HTML, CSS, Formspree
+Frontend: Legacy HTML, CSS, JavaScript
+Form Handling: Formspree
 
 ## Running Locally
 
