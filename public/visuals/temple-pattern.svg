@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <g stroke="#9b5520" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Subtle diamond lattice -->
+    <path d="M80 0 L160 80 L80 160 L0 80 Z" stroke-width="0.9" stroke-opacity="0.08"/>
+    <path d="M80 16 L144 80 L80 144 L16 80 Z" stroke-width="0.7" stroke-opacity="0.06" stroke-dasharray="3 4"/>
+
+    <!-- Center lotus medallion (80, 80) -->
+    <circle cx="80" cy="80" r="24" stroke-width="0.9" stroke-opacity="0.09"/>
+    <circle cx="80" cy="80" r="9" stroke-width="0.9" stroke-opacity="0.1"/>
+    <circle cx="80" cy="80" r="2.5" fill="#9b5520" fill-opacity="0.09" stroke="none"/>
+
+    <!-- Cardinal lotus petals around center -->
+    <path d="M80 56 C86 64 86 72 80 78 C74 72 74 64 80 56 Z" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M80 104 C86 96 86 88 80 82 C74 88 74 96 80 104 Z" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M56 80 C64 74 72 74 78 80 C72 86 64 86 56 80 Z" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M104 80 C96 74 88 74 82 80 C88 86 96 86 104 80 Z" stroke-width="0.9" stroke-opacity="0.1"/>
+
+    <!-- Diagonal lotus petals around center -->
+    <path d="M63 63 C71 65 76 70 78 78 C70 76 65 71 63 63 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M97 63 C89 65 84 70 82 78 C90 76 95 71 97 63 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M63 97 C71 95 76 90 78 82 C70 84 65 89 63 97 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M97 97 C89 95 84 90 82 82 C90 84 95 89 97 97 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+
+    <!-- Small cardinal accents outside center ring -->
+    <circle cx="80" cy="46" r="1.8" fill="#9b5520" fill-opacity="0.09" stroke="none"/>
+    <circle cx="80" cy="114" r="1.8" fill="#9b5520" fill-opacity="0.09" stroke="none"/>
+    <circle cx="46" cy="80" r="1.8" fill="#9b5520" fill-opacity="0.09" stroke="none"/>
+    <circle cx="114" cy="80" r="1.8" fill="#9b5520" fill-opacity="0.09" stroke="none"/>
+
+    <!-- Seamless corner quarter-lotuses (join across tile edges into full medallions) -->
+    <!-- Top-left corner (0, 0) -->
+    <circle cx="0" cy="0" r="20" stroke-width="0.9" stroke-opacity="0.09"/>
+    <circle cx="0" cy="0" r="7" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M0 0 C8 2 13 7 15 15 C7 13 2 8 0 0 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M24 0 C16 5 8 5 0 0" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M0 24 C5 16 5 8 0 0" stroke-width="0.85" stroke-opacity="0.09"/>
+
+    <!-- Top-right corner (160, 0) -->
+    <circle cx="160" cy="0" r="20" stroke-width="0.9" stroke-opacity="0.09"/>
+    <circle cx="160" cy="0" r="7" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M160 0 C152 2 147 7 145 15 C153 13 158 8 160 0 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M136 0 C144 5 152 5 160 0" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M160 24 C155 16 155 8 160 0" stroke-width="0.85" stroke-opacity="0.09"/>
+
+    <!-- Bottom-left corner (0, 160) -->
+    <circle cx="0" cy="160" r="20" stroke-width="0.9" stroke-opacity="0.09"/>
+    <circle cx="0" cy="160" r="7" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M0 160 C8 158 13 153 15 145 C7 147 2 152 0 160 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M24 160 C16 155 8 155 0 160" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M0 136 C5 144 5 152 0 160" stroke-width="0.85" stroke-opacity="0.09"/>
+
+    <!-- Bottom-right corner (160, 160) -->
+    <circle cx="160" cy="160" r="20" stroke-width="0.9" stroke-opacity="0.09"/>
+    <circle cx="160" cy="160" r="7" stroke-width="0.9" stroke-opacity="0.1"/>
+    <path d="M160 160 C152 158 147 153 145 145 C153 147 158 152 160 160 Z" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M136 160 C144 155 152 155 160 160" stroke-width="0.85" stroke-opacity="0.09"/>
+    <path d="M160 136 C155 144 155 152 160 160" stroke-width="0.85" stroke-opacity="0.09"/>
+  </g>
+</svg>
