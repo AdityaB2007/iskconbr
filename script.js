@@ -122,11 +122,14 @@ if (!prefersReducedMotion) {
 
     internalLinks.forEach((link) => {
         link.addEventListener("click", (event) => {
+            const rawHref = link.getAttribute("href") || "";
             const destination = link.href;
             const currentPage = window.location.href;
 
-            const isSamePageLink =
-                link.getAttribute("href").startsWith("#");
+            const isSamePageLink = rawHref.startsWith("#");
+
+            const isProtocolLink =
+                rawHref.startsWith("mailto:") || rawHref.startsWith("tel:");
 
             const isExternalLink =
                 link.origin !== window.location.origin;
@@ -136,6 +139,7 @@ if (!prefersReducedMotion) {
 
             if (
                 isSamePageLink ||
+                isProtocolLink ||
                 isExternalLink ||
                 isSameDestination
             ) {
@@ -154,3 +158,84 @@ if (!prefersReducedMotion) {
         });
     });
 }
+
+/* ================================
+   Copy Zelle ID
+================================ */
+
+function copyTextFallback(text) {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.appendChild(helper);
+    helper.select();
+
+    let succeeded = false;
+    try {
+        succeeded = document.execCommand("copy");
+    } catch {
+        succeeded = false;
+    }
+
+    document.body.removeChild(helper);
+    return succeeded;
+}
+
+const copyButtons = document.querySelectorAll("[data-copy-text]");
+
+copyButtons.forEach((button) => {
+    const originalHtml = button.innerHTML;
+    let resetTimer = null;
+
+    button.addEventListener("click", async () => {
+        const textToCopy = button.getAttribute("data-copy-text");
+        if (!textToCopy) {
+            return;
+        }
+
+        let copied = false;
+
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                copied = true;
+            } catch {
+                copied = copyTextFallback(textToCopy);
+            }
+        } else {
+            copied = copyTextFallback(textToCopy);
+        }
+
+        const feedbackId = button.getAttribute("aria-describedby");
+        const feedbackEl = feedbackId
+            ? document.getElementById(feedbackId)
+            : null;
+
+        if (resetTimer !== null) {
+            clearTimeout(resetTimer);
+        }
+
+        if (copied) {
+            button.classList.add("copied");
+            button.textContent = "Copied!";
+            if (feedbackEl) {
+                feedbackEl.textContent =
+                    "Zelle ID copied to clipboard: " + textToCopy;
+            }
+        } else if (feedbackEl) {
+            feedbackEl.textContent =
+                "Copy unavailable; please copy " + textToCopy + " manually.";
+        }
+
+        resetTimer = setTimeout(() => {
+            button.classList.remove("copied");
+            button.innerHTML = originalHtml;
+            if (feedbackEl) {
+                feedbackEl.textContent = "";
+            }
+            resetTimer = null;
+        }, 2500);
+    });
+});

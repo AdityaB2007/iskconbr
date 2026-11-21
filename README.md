@@ -12,6 +12,7 @@ The website provides information about:
 - Community activities
 - Contact information
 - Photo gallery
+- Support and donations (Zelle)
 
 ## Features
 

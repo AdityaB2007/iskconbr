@@ -45,6 +45,9 @@ html {
 }
 
 body {
+    position: relative;
+    z-index: 0;
+
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -54,6 +57,24 @@ body {
 
     background-color: var(--background);
     color: var(--text);
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+        url("public/visuals/temple-pattern.svg"),
+        radial-gradient(circle at 14% 16%, rgba(214, 163, 93, 0.24), transparent 46%),
+        radial-gradient(circle at 86% 24%, rgba(155, 85, 32, 0.14), transparent 44%),
+        radial-gradient(circle at 50% 92%, rgba(214, 163, 93, 0.20), transparent 52%),
+        linear-gradient(165deg, #fbf6ec 0%, #f5ead8 52%, #efe0c8 100%);
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 160px 160px, auto, auto, auto, auto;
 }
 
 main {
@@ -94,7 +115,9 @@ p:last-child {
 .hero-buttons a,
 .schedule-preview a,
 .visit-section a,
-.contact-form button {
+.contact-form button,
+.btn-primary,
+.btn-outline {
     display: inline-block;
 
     padding: 12px 20px;
@@ -121,7 +144,12 @@ p:last-child {
 .navbar a:focus-visible,
 .about-nav a:focus-visible,
 .book-card a:focus-visible,
-.social-link:focus-visible {
+.social-link:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline:focus-visible,
+.copy-zelle-btn:focus-visible,
+.donate-zelle-button:focus-visible,
+.phone-link:focus-visible {
     outline: 3px solid var(--focus);
     outline-offset: 3px;
 }
@@ -129,7 +157,9 @@ p:last-child {
 .hero-buttons a:active,
 .schedule-preview a:active,
 .visit-section a:active,
-.contact-form button:active {
+.contact-form button:active,
+.btn-primary:active,
+.btn-outline:active {
     transform: translateY(1px);
 }
 
@@ -137,6 +167,10 @@ p:last-child {
 /* ================================
    Navbar
 ================================ */
+
+header {
+    border-top: 4px solid var(--primary);
+}
 
 .navbar {
     display: flex;
@@ -146,8 +180,10 @@ p:last-child {
 
     padding: 18px 36px;
 
-    background-color: var(--surface-alt);
+    background-color: rgba(255, 250, 241, 0.94);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(70, 52, 30, 0.07);
 }
 
 .logo {
@@ -195,6 +231,18 @@ p:last-child {
     background-color: var(--surface-hover);
 }
 
+.navbar a.nav-donate {
+    border: 1px solid var(--primary);
+    background-color: rgba(155, 85, 32, 0.08);
+    color: var(--primary);
+}
+
+.navbar a.nav-donate:hover,
+.navbar a.nav-donate.active {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
 
 /* ================================
    Homepage Hero
@@ -210,10 +258,10 @@ p:last-child {
     margin: 56px auto;
     padding: 56px 48px;
 
-    background-color: var(--surface);
+    background-color: rgba(255, 253, 248, 0.94);
     border: 1px solid var(--border);
     border-radius: var(--radius-round);
-    box-shadow: var(--shadow-large);
+    box-shadow: 0 16px 34px rgba(70, 52, 30, 0.10);
 }
 
 .hero-text {
@@ -264,7 +312,8 @@ p:last-child {
 .hero-buttons a:first-child,
 .schedule-preview a,
 .visit-section a,
-.contact-form button {
+.contact-form button,
+.btn-primary {
     background-color: var(--primary);
     color: white;
 }
@@ -272,16 +321,19 @@ p:last-child {
 .hero-buttons a:first-child:hover,
 .schedule-preview a:hover,
 .visit-section a:hover,
-.contact-form button:hover {
+.contact-form button:hover,
+.btn-primary:hover {
     background-color: var(--primary-dark);
 }
 
-.hero-buttons a:last-child {
+.hero-buttons a:last-child,
+.btn-outline {
     border: 1px solid var(--primary);
     color: var(--primary);
 }
 
-.hero-buttons a:last-child:hover {
+.hero-buttons a:last-child:hover,
+.btn-outline:hover {
     background-color: #f7e8d6;
 }
 
@@ -547,14 +599,18 @@ p:last-child {
 .gallery-section,
 .welcome-section,
 .schedule-preview,
-.visit-section {
+.visit-section,
+.donate-section,
+.donate-inquiry,
+.support-callout,
+.visual-showcase {
     margin: 40px 0;
     padding: 36px 32px;
 
-    background-color: var(--surface);
+    background-color: rgba(255, 253, 248, 0.94);
     border: 1px solid var(--border);
     border-radius: var(--radius-large);
-    box-shadow: var(--shadow-medium);
+    box-shadow: 0 12px 28px rgba(70, 52, 30, 0.08);
 }
 
 .page-intro {
@@ -568,11 +624,43 @@ p:last-child {
     font-size: 2.4rem;
 }
 
+.page-intro h1::after {
+    content: "";
+
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 12px auto 0;
+
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--focus), var(--primary), var(--focus));
+}
+
 .page-intro p {
     max-width: 720px;
     margin: 0 auto;
 
     color: var(--text-muted);
+}
+
+.welcome-section h2,
+.schedule-preview h2,
+.about-section h2,
+.visitor-info h2,
+.donate-section h2,
+.donate-inquiry h2,
+.support-callout h2,
+.visual-showcase h2,
+.contact-info h2,
+.contact-form h2,
+.gallery-section h2 {
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.gallery-section h2,
+.visual-showcase h2 {
+    text-align: center;
 }
 
 .welcome-section h2,
@@ -582,7 +670,104 @@ p:last-child {
 
 .daily-programs h2,
 .schedule-section h2 {
+    color: var(--primary);
     margin-bottom: 24px;
+}
+
+
+/* ================================
+   Archival Split Layouts & Frames
+================================ */
+
+.split-section {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 32px;
+    align-items: center;
+}
+
+.split-section--reverse {
+    grid-template-columns: 1fr 1.25fr;
+}
+
+.split-section--reverse .split-media {
+    order: -1;
+}
+
+.split-text,
+.split-media {
+    min-width: 0;
+}
+
+.feature-figure {
+    margin: 0;
+    padding: 8px;
+
+    background-color: var(--surface-alt);
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-medium);
+    box-shadow: 0 10px 24px rgba(70, 52, 30, 0.12);
+}
+
+.feature-figure img {
+    width: 100%;
+    height: auto;
+
+    border-radius: calc(var(--radius-medium) - 4px);
+    filter: sepia(14%) contrast(1.03);
+}
+
+.feature-figure figcaption {
+    margin-top: 8px;
+    padding: 2px 6px 4px;
+
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.visual-pair {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+
+    margin-top: 24px;
+}
+
+.section-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.section-actions--center {
+    justify-content: center;
+}
+
+.support-callout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(255, 250, 241, 0.96),
+        rgba(247, 232, 214, 0.94)
+    );
+}
+
+.support-callout-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.support-callout-action {
+    flex-shrink: 0;
 }
 
 
@@ -628,6 +813,10 @@ p:last-child {
     background-color: var(--surface-alt);
     border: 1px solid var(--border);
     border-radius: var(--radius-medium);
+}
+
+.resource-card + .resource-card {
+    margin-top: 20px;
 }
 
 .resource-card h3 {
@@ -746,6 +935,36 @@ tbody tr:nth-child(even) {
 }
 
 .contact-info {
+    text-align: center;
+}
+
+.contact-arch-figure {
+    max-width: 440px;
+    margin: 24px auto 0;
+    padding: 10px;
+
+    background-color: var(--surface-alt);
+    border: 1px solid var(--border-dark);
+    border-radius: 164px 164px var(--radius-medium) var(--radius-medium);
+    box-shadow: 0 10px 24px rgba(70, 52, 30, 0.12);
+}
+
+.contact-arch-figure img {
+    width: 100%;
+    height: auto;
+
+    border-radius: 150px 150px 10px 10px;
+    filter: sepia(14%) contrast(1.03);
+}
+
+.contact-arch-figure figcaption {
+    margin-top: 8px;
+    padding: 2px 10px 4px;
+
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.45;
     text-align: center;
 }
 
@@ -898,6 +1117,250 @@ tbody tr:nth-child(even) {
     font-size: 1.2rem;
 }
 
+.footer-socials {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.footer-socials .social-link {
+    margin-top: 0;
+}
+
+
+/* ================================
+   Donate Page
+================================ */
+
+.donate-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.95fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.donate-story h2 {
+    margin-bottom: 14px;
+    color: var(--primary);
+}
+
+.donate-list {
+    margin: 16px 0 24px 20px;
+    color: var(--text-muted);
+}
+
+.donate-list li + li {
+    margin-top: 8px;
+}
+
+.zelle-card {
+    padding: 28px 24px;
+
+    background-color: var(--surface-alt);
+    border: 2px solid var(--border-dark);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-medium);
+
+    text-align: center;
+}
+
+.zelle-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+.zelle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+
+    background-color: rgba(155, 85, 32, 0.12);
+    color: var(--primary);
+    font-size: 1.45rem;
+}
+
+.zelle-card-header h2 {
+    margin-bottom: 0;
+    color: var(--primary);
+    font-size: 1.55rem;
+}
+
+.zelle-recipient {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 4px 12px;
+
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    color: #5a3e1f;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.zelle-qr-box {
+    display: inline-block;
+    margin: 0 auto 18px;
+    padding: 14px;
+
+    background-color: #ffffff;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+}
+
+.zelle-qr-box img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    margin: 0 auto;
+
+    filter: none;
+}
+
+.zelle-id-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-bottom: 10px;
+    padding: 12px 14px;
+
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+}
+
+.zelle-id-label {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.zelle-id-value {
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.96rem;
+    font-weight: 700;
+    word-break: break-all;
+}
+
+.copy-zelle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 12px;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+
+    background-color: transparent;
+    color: var(--primary);
+
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.copy-zelle-btn:hover {
+    background-color: var(--surface-hover);
+}
+
+.copy-zelle-btn.copied {
+    background-color: var(--primary);
+    color: #ffffff;
+}
+
+.copy-feedback {
+    display: block;
+    min-height: 1.2em;
+    margin-bottom: 12px;
+
+    color: var(--primary-dark);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.donate-zelle-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    width: 100%;
+    padding: 13px 20px;
+    border-radius: var(--radius-small);
+
+    background-color: var(--primary);
+    color: #ffffff;
+
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.donate-zelle-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.donate-zelle-button:active {
+    transform: translateY(1px);
+}
+
+.zelle-steps {
+    margin-top: 20px;
+    padding-left: 20px;
+
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    text-align: left;
+}
+
+.zelle-steps li + li {
+    margin-top: 6px;
+}
+
+.donate-inquiry {
+    text-align: center;
+}
+
+.donate-inquiry p {
+    max-width: 720px;
+    margin: 0 auto 16px;
+
+    color: var(--text-muted);
+}
+
+.donate-inquiry a.phone-link {
+    color: var(--link);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.donate-inquiry a.phone-link:hover {
+    text-decoration: underline;
+}
+
 
 /* ================================
    Gallery
@@ -1032,9 +1495,30 @@ footer {
     .gallery-section,
     .welcome-section,
     .schedule-preview,
-    .visit-section {
+    .visit-section,
+    .donate-section,
+    .donate-inquiry,
+    .support-callout,
+    .visual-showcase {
         margin: 28px 0;
         padding: 28px 20px;
+    }
+
+    .split-section,
+    .split-section--reverse,
+    .visual-pair,
+    .donate-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .split-section--reverse .split-media {
+        order: 0;
+    }
+
+    .support-callout {
+        flex-direction: column;
+        text-align: center;
     }
 
     .resources-section {
