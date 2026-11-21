@@ -38,4 +38,4 @@ See the accompanying `LICENSE` file for license information.
 
 ## Credits
 
-I am sincerely grateful to the devotees of the ISKCON Baton Rouge community for allowing me to contribute to this project in service to Lord Krishna and the community. I am deeply thankful for their trust, encouragement, and continued support, without which this project would not have been possible. I hope this website can be of some service to the devotees and everyone seeking to learn more about Krishna consciousness.
+I am sincerely grateful to the devotees of the ISKCON Baton Rouge community for allowing me to contribute to this project in service to Lord Krishna and the community. Without their trust, encouragement, and continued support, this project would not have been possible. I hope this website can be of some service to the devotees and anyone seeking to learn more about Krishna consciousness and bhakti-yoga.
