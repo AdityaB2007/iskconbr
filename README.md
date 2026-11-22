@@ -4,33 +4,20 @@ Official website for **New Vraja Dham**, an ISKCON-affiliated bhakti-yoga center
 
 ## Website
 
-The website provides information about:
-
-- Temple programs and events
-- Bhakti-yoga and devotional practices
-- Educational resources
-- Community activities
-- Contact information
-- Photo gallery
-- Support and donations (Zelle)
+The website provides information about temple programs and events, bhakti-yoga and devotional practices, educational resources, community activities, contact information, and a photo gallery. It also includes information on supporting the center through donations via Zelle.
 
 ## Features
 
-- Responsive design
-- SEO and Open Graph metadata
-- Contact form
-- Mobile-friendly layout
+The website features a responsive, mobile-friendly design, SEO and Open Graph metadata, and an integrated contact form.
 
 ## Built With
 
-Frontend: Legacy HTML, CSS, JavaScript<br>
+Frontend: Legacy HTML, CSS, JavaScript  
 Form Handling: Formspree
 
 ## Running Locally
 
-Clone the repository and open `index.html` in a web browser.
-
-No build process or additional dependencies are required.
+Clone the repository and open `index.html` in a web browser. No build process or additional dependencies are required.
 
 ## License
 
